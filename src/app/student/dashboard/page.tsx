@@ -403,7 +403,7 @@ export default function StudentDashboard() {
                       <YAxis tick={{ fontSize: 11, fill: "#94A3B8" }} axisLine={false} tickLine={false} domain={[60, 100]} />
                       <Tooltip
                         contentStyle={{ background: "var(--bg-card)", border: "1px solid var(--border-subtle)", borderRadius: "12px", fontSize: "12px" }}
-                        formatter={(v) => [`${v}%`, "Score"]}
+                        formatter={(v: any) => [`${v}%`, "Score"]}
                       />
                       <Area type="monotone" dataKey="score" stroke="#2563EB" strokeWidth={2.5} fill="url(#scoreGrad)" dot={{ fill: "#2563EB", strokeWidth: 0, r: 4 }} activeDot={{ r: 6 }} />
                     </AreaChart>

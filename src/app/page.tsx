@@ -7,9 +7,9 @@ import {
   ArrowRight, Play, BookOpen, Users, BarChart3, Brain,
   Shield, Zap, Award, MessageSquare, Calendar, CreditCard,
   GraduationCap, Building2, Star, Check, ChevronRight,
-  ChevronUp, Mail, Twitter, Linkedin, Github, Instagram,
+  ChevronUp, Mail, GitBranch, Share2,
   Layers, Settings, Bell, Search, Target, TrendingUp,
-  FileText, Video, Clock, MapPin, Phone, Youtube
+  FileText, Video, Clock, MapPin, Phone
 } from "lucide-react";
 
 // ─── Animated Counter ──────────────────────────────────────────────────────────
@@ -823,7 +823,7 @@ function AIShowcase() {
                       className="max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed"
                       style={
                         msg.role === "user"
-                          ? { background: "var(--gradient-hero)", background: "linear-gradient(135deg, #2563EB 0%, #7C3AED 100%)", color: "white", borderRadius: "18px 18px 4px 18px" }
+                          ? { background: "linear-gradient(135deg, #2563EB 0%, #7C3AED 100%)", color: "white", borderRadius: "18px 18px 4px 18px" }
                           : { background: "rgba(255,255,255,0.06)", color: "#E2E8F0", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "18px 18px 18px 4px" }
                       }
                     >
@@ -1375,10 +1375,10 @@ function Footer() {
             <p className="text-xs mb-4" style={{ color: "#475569" }}>Nexvora Dev Pvt Ltd</p>
             <div className="flex gap-3">
               {[
-                { icon: Twitter, href: "#" },
-                { icon: Linkedin, href: "#" },
-                { icon: Github, href: "#" },
-                { icon: Youtube, href: "#" },
+                { icon: Globe, href: "#" },
+                { icon: Share2, href: "#" },
+                { icon: GitBranch, href: "#" },
+                { icon: Video, href: "#" },
               ].map(({ icon: Icon, href }) => (
                 <a
                   key={href}

@@ -319,7 +319,7 @@ export default function AdminDashboard() {
                       <YAxis tick={{ fontSize: 11, fill: "#94A3B8" }} axisLine={false} tickLine={false} tickFormatter={v => `$${(v / 1000).toFixed(0)}k`} />
                       <Tooltip
                         contentStyle={{ background: "var(--bg-card)", border: "1px solid var(--border-subtle)", borderRadius: "12px", fontSize: "12px" }}
-                        formatter={(v: number) => [`$${v.toLocaleString()}`, ""]}
+                        formatter={(v: any) => [`$${Number(v || 0).toLocaleString()}`, ""]}
                       />
                       <Area type="monotone" dataKey="target" stroke="#E2E8F0" strokeWidth={2} fill="none" strokeDasharray="4 4" />
                       <Area type="monotone" dataKey="revenue" stroke="#2563EB" strokeWidth={2.5} fill="url(#revenueGrad)" dot={{ fill: "#2563EB", strokeWidth: 0, r: 3 }} activeDot={{ r: 5 }} />
@@ -348,7 +348,7 @@ export default function AdminDashboard() {
                           <Cell key={i} fill={entry.color} />
                         ))}
                       </Pie>
-                      <Tooltip formatter={(v) => [`${v}%`, ""]} contentStyle={{ fontSize: "12px", borderRadius: "8px" }} />
+                      <Tooltip formatter={(v: any) => [`${v}%`, ""]} contentStyle={{ fontSize: "12px", borderRadius: "8px" }} />
                     </PieChart>
                   </ResponsiveContainer>
                 </div>

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import {
-  Eye, EyeOff, Mail, Lock, ArrowRight, Sparkles, Chrome,
+  Eye, EyeOff, Mail, Lock, ArrowRight, Sparkles,
   Check, AlertCircle, Brain, BarChart3, Users, BookOpen,
   GraduationCap, Shield, Globe, Star
 } from "lucide-react";

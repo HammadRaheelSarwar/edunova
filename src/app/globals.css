@@ -1,12 +1,12 @@
+/* Google Fonts — MUST be before @import "tailwindcss" */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
 @import "tailwindcss";
 
 /* ============================================================
    EDUNOVA AI — DESIGN SYSTEM
    Nexvora Dev Pvt Ltd | Master CSS Tokens & Global Styles
    ============================================================ */
-
-/* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
 /* ============================================================
    TAILWIND V4 THEME CONFIGURATION
