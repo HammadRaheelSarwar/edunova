@@ -6,7 +6,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { loadAllPlugins } from '../utils/loadPlugins';
 
-const API = 'http://localhost:5000/api';
+const API = '/api';
 
 // ─── Accordion ────────────────────────────────────────────────────────────
 function Accordion({ title, body, last, defaultOpen }) {

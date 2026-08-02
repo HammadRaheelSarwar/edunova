@@ -5,7 +5,7 @@ import SubHeader from '../components/SubHeader';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
-const API = 'http://localhost:5000/api';
+const API = '/api';
 
 const FILTERS = [
   { label: 'All Meetings', value: 'all' },

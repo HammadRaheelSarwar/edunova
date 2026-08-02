@@ -2,7 +2,11 @@ function Footer() {
   return (
     <div className="footer">
       <p>
-        Copyright &copy; 2024 EduNova Co., Ltd. All Rights Reserved.
+        Copyright &copy; 2024 Edu Meeting Co., Ltd. All Rights Reserved.
+        <br />
+        Created by: <a href="https://www.nexvoragroup.dev" target="_blank" rel="noreferrer">Nexvora Dev</a>
+        <br />
+        <a href="https://www.nexvoragroup.dev" target="_blank" rel="noreferrer">www.nexvoragroup.dev</a>
       </p>
     </div>
   );
