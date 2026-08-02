@@ -4,9 +4,14 @@ function Footer() {
       <p>
         Copyright &copy; 2024 Edu Meeting Co., Ltd. All Rights Reserved.
         <br />
-        Created by: <a href="https://www.nexvoragroup.dev" target="_blank" rel="noreferrer">Nexvora Dev</a>
+        Powered by:{' '}
+        <a href="https://www.nexvoragroup.dev" target="_blank" rel="noreferrer">
+          Nexvora Dev
+        </a>
         <br />
-        <a href="https://www.nexvoragroup.dev" target="_blank" rel="noreferrer">www.nexvoragroup.dev</a>
+        <a href="https://www.nexvoragroup.dev" target="_blank" rel="noreferrer">
+          www.nexvoragroup.dev
+        </a>
       </p>
     </div>
   );
