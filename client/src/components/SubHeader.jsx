@@ -1,27 +1,6 @@
+// Sub-header removed as per user request
 function SubHeader() {
-  return (
-    <div className="sub-header">
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-8 col-sm-8">
-            <div className="left-content">
-              <p>Welcome to <em>EduNova</em> — Your Education Meeting Platform.</p>
-            </div>
-          </div>
-          <div className="col-lg-4 col-sm-4">
-            <div className="right-icons">
-              <ul>
-                <li><a href="#"><i className="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i className="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i className="fa fa-behance"></i></a></li>
-                <li><a href="#"><i className="fa fa-linkedin"></i></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+  return null;
 }
 
 export default SubHeader;
