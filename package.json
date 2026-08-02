@@ -1,0 +1,13 @@
+{
+  "name": "edunova-mern",
+  "version": "1.0.0",
+  "description": "EduNova MERN Stack - Educational Meeting Platform",
+  "scripts": {
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm run dev",
+    "seed": "cd server && npm run seed",
+    "install-all": "cd server && npm install && cd ../client && npm install",
+    "dev": "start npm run server && timeout /t 2 && start npm run client"
+  },
+  "keywords": ["mern", "education", "react", "node", "express", "mongodb"]
+}

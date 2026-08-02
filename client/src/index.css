@@ -1,0 +1,4 @@
+/* EduNova — Clear Vite defaults, use original site CSS loaded via index.html */
+* {
+  box-sizing: border-box;
+}
