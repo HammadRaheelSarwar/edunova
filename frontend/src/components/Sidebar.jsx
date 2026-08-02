@@ -5,10 +5,16 @@ import {
   Users, 
   UserCheck, 
   BookOpen, 
+  UserPlus,
   Calendar, 
+  FileCode,
+  Clock,
   Award, 
   CreditCard, 
   Library as LibraryIcon, 
+  Trophy,
+  Building2,
+  Heart,
   LogOut 
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
@@ -21,10 +27,16 @@ export default function Sidebar({ currentPage, setCurrentPage }) {
     { id: 'students', label: 'Students', icon: Users },
     { id: 'faculty', label: 'Faculty', icon: UserCheck },
     { id: 'courses', label: 'Courses & Programs', icon: BookOpen },
+    { id: 'admissions', label: 'Admissions', icon: UserPlus },
     { id: 'attendance', label: 'Attendance', icon: Calendar },
+    { id: 'assignments', label: 'Assignments', icon: FileCode },
+    { id: 'timetable', label: 'Timetable', icon: Clock },
     { id: 'exams', label: 'Exams & Grades', icon: Award },
     { id: 'fees', label: 'Fees & Finance', icon: CreditCard },
-    { id: 'library', label: 'Library Catalog', icon: LibraryIcon }
+    { id: 'library', label: 'Library Catalog', icon: LibraryIcon },
+    { id: 'activities', label: 'Activities & Clubs', icon: Trophy },
+    { id: 'facilities', label: 'Facilities & Rooms', icon: Building2 },
+    { id: 'parents', label: 'Parent Directory', icon: Heart }
   ];
 
   return (
@@ -67,7 +79,7 @@ export default function Sidebar({ currentPage, setCurrentPage }) {
             EduNova
           </h1>
           <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600 }}>
-            MERN ERP v18.0
+            All 14 Modules Enabled
           </span>
         </div>
       </div>
@@ -75,7 +87,7 @@ export default function Sidebar({ currentPage, setCurrentPage }) {
       {/* Navigation Links */}
       <nav style={{ padding: '1rem 0.75rem', flex: 1, overflowY: 'auto' }}>
         <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-dim)', padding: '0.5rem 0.75rem', marginBottom: '0.25rem', fontWeight: 700 }}>
-          Main Menu
+          ERP Modules (14/14)
         </div>
         {menuItems.map((item) => {
           const Icon = item.icon;
@@ -89,20 +101,20 @@ export default function Sidebar({ currentPage, setCurrentPage }) {
                 display: 'flex',
                 alignItems: 'center',
                 gap: '0.85rem',
-                padding: '0.75rem 1rem',
-                marginBottom: '0.35rem',
+                padding: '0.65rem 0.85rem',
+                marginBottom: '0.25rem',
                 borderRadius: 'var(--radius-sm)',
                 border: 'none',
                 background: isActive ? 'var(--accent-gradient)' : 'transparent',
                 color: isActive ? '#fff' : 'var(--text-muted)',
                 fontWeight: isActive ? 700 : 500,
-                fontSize: '0.9rem',
+                fontSize: '0.85rem',
                 cursor: 'pointer',
                 transition: 'all 0.2s ease',
                 boxShadow: isActive ? '0 4px 12px rgba(99, 102, 241, 0.3)' : 'none'
               }}
             >
-              <Icon size={18} />
+              <Icon size={16} />
               {item.label}
             </button>
           );
@@ -118,18 +130,18 @@ export default function Sidebar({ currentPage, setCurrentPage }) {
             display: 'flex',
             alignItems: 'center',
             gap: '0.75rem',
-            padding: '0.75rem 1rem',
+            padding: '0.65rem 0.85rem',
             borderRadius: 'var(--radius-sm)',
             border: '1px solid var(--border-color)',
             background: 'rgba(255, 255, 255, 0.03)',
             color: 'var(--text-muted)',
             cursor: 'pointer',
-            fontSize: '0.875rem',
+            fontSize: '0.85rem',
             fontWeight: 600,
             transition: 'all 0.2s ease'
           }}
         >
-          <LogOut size={18} />
+          <LogOut size={16} />
           Sign Out
         </button>
       </div>

@@ -4,22 +4,56 @@ import { Calendar as CalendarIcon, CheckCircle2, XCircle, Clock, Save } from 'lu
 export default function Attendance() {
   const [attendanceDate, setAttendanceDate] = useState('2026-08-02');
   const [course, setCourse] = useState('Computer Science');
-  const [students, setStudents] = useState([
-    { id: '1', name: 'Alex Johnson', rollNo: 'CS-01', status: 'Present' },
-    { id: '2', name: 'Sophia Chen', rollNo: 'SE-04', status: 'Present' },
-    { id: '3', name: 'Marcus Vance', rollNo: 'BA-12', status: 'Absent' },
-    { id: '4', name: 'Emily Davis', rollNo: 'DS-02', status: 'Present' },
-    { id: '5', name: 'Michael Faraday', rollNo: 'CS-05', status: 'Late' }
-  ]);
+  const [students, setStudents] = useState([]);
   const [savedMsg, setSavedMsg] = useState(false);
+
+  useEffect(() => {
+    const fetchStudentsForAttendance = async () => {
+      try {
+        const res = await fetch('/api/students');
+        const data = await res.json();
+        const formatted = data.map(s => ({
+          id: s._id || s.studentId,
+          studentId: s.studentId,
+          name: s.name,
+          rollNo: s.rollNo || 'CS-01',
+          status: 'Present'
+        }));
+        setStudents(formatted);
+      } catch (err) {
+        console.error('Failed to fetch students for attendance', err);
+      }
+    };
+
+    fetchStudentsForAttendance();
+  }, []);
 
   const toggleStatus = (id, newStatus) => {
     setStudents(students.map(s => s.id === id ? { ...s, status: newStatus } : s));
   };
 
-  const handleSave = () => {
-    setSavedMsg(true);
-    setTimeout(() => setSavedMsg(false), 3000);
+  const handleSave = async () => {
+    try {
+      await fetch('/api/attendance', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          date: attendanceDate,
+          course: course,
+          batch: '2023-2027',
+          records: students.map(s => ({
+            studentId: s.studentId,
+            studentName: s.name,
+            rollNo: s.rollNo,
+            status: s.status
+          }))
+        })
+      });
+      setSavedMsg(true);
+      setTimeout(() => setSavedMsg(false), 3000);
+    } catch (err) {
+      console.error('Failed to save attendance', err);
+    }
   };
 
   return (
@@ -28,7 +62,7 @@ export default function Attendance() {
         <div>
           <h1 className="page-title">Attendance Register</h1>
           <p className="page-subtitle" style={{ marginBottom: 0 }}>
-            Daily session attendance tracking for classes and lab sessions.
+            Daily session attendance tracking connected to student database.
           </p>
         </div>
         <button className="btn btn-primary" onClick={handleSave}>
@@ -39,7 +73,7 @@ export default function Attendance() {
 
       {savedMsg && (
         <div style={{ background: 'var(--success-bg)', color: 'var(--success)', border: '1px solid var(--success)', padding: '0.75rem 1rem', borderRadius: 'var(--radius-sm)', marginBottom: '1.25rem', fontWeight: 600 }}>
-          Attendance register saved successfully for {attendanceDate}!
+          Attendance register saved successfully via API for {attendanceDate}!
         </div>
       )}
 

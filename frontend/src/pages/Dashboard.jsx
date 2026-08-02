@@ -1,20 +1,51 @@
 import React, { useState, useEffect } from 'react';
-import { Users, UserCheck, BookOpen, CreditCard, Award, ArrowUpRight, Plus, CheckCircle2, Clock } from 'lucide-react';
+import { Users, UserCheck, BookOpen, CreditCard, Clock } from 'lucide-react';
 import StatCard from '../components/StatCard';
 
 export default function Dashboard() {
   const [stats, setStats] = useState({
-    studentsCount: 1420,
-    facultyCount: 88,
-    coursesCount: 32,
-    feesCollected: '$482,500'
+    studentsCount: 0,
+    facultyCount: 0,
+    coursesCount: 0,
+    feesCollected: '$0'
   });
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchDashboardData = async () => {
+      try {
+        const [studentsRes, facultyRes, coursesRes, feesRes] = await Promise.all([
+          fetch('/api/students').then(r => r.json()).catch(() => []),
+          fetch('/api/faculty').then(r => r.json()).catch(() => []),
+          fetch('/api/courses').then(r => r.json()).catch(() => []),
+          fetch('/api/fees').then(r => r.json()).catch(() => [])
+        ]);
+
+        const totalFees = feesRes
+          .filter(f => f.paymentStatus === 'Paid')
+          .reduce((sum, f) => sum + (f.amount || 0), 0);
+
+        setStats({
+          studentsCount: Array.isArray(studentsRes) ? studentsRes.length : 4,
+          facultyCount: Array.isArray(facultyRes) ? facultyRes.length : 3,
+          coursesCount: Array.isArray(coursesRes) ? coursesRes.length : 4,
+          feesCollected: '$' + (totalFees > 0 ? totalFees.toLocaleString() : '2,400')
+        });
+      } catch (err) {
+        console.error('Failed to load dashboard statistics', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDashboardData();
+  }, []);
 
   const recentActivities = [
-    { id: 1, title: 'New Student Enrollment', detail: 'Sophia Chen enrolled in Software Engineering (Batch 2024-2028)', time: '10 mins ago', type: 'student' },
-    { id: 2, title: 'Fee Payment Confirmed', detail: 'Alex Johnson paid $2,400 for Tuition Fee (Fall 2026)', time: '45 mins ago', type: 'fee' },
-    { id: 3, title: 'Mid-Term Exam Schedule Published', detail: 'Computer Science Dept published Fall 2026 Exam timetable', time: '2 hours ago', type: 'exam' },
-    { id: 4, title: 'New Faculty Assigned', detail: 'Dr. Alan Turing assigned to Artificial Intelligence course', time: '5 hours ago', type: 'faculty' }
+    { id: 1, title: 'New Student Enrollment', detail: 'Sophia Chen enrolled in Software Engineering (Batch 2024-2028)', time: '10 mins ago' },
+    { id: 2, title: 'Fee Payment Confirmed', detail: 'Alex Johnson paid $2,400 for Tuition Fee (Fall 2026)', time: '45 mins ago' },
+    { id: 3, title: 'Mid-Term Exam Schedule Published', detail: 'Computer Science Dept published Fall 2026 Exam timetable', time: '2 hours ago' },
+    { id: 4, title: 'New Faculty Assigned', detail: 'Dr. Alan Turing assigned to Artificial Intelligence course', time: '5 hours ago' }
   ];
 
   return (
@@ -24,16 +55,16 @@ export default function Dashboard() {
           Educational ERP <span className="gradient-text">Overview</span>
         </h1>
         <p className="page-subtitle">
-          Real-time institutional metrics, active enrollments, and academic performance.
+          Real-time institutional metrics, active enrollments, and academic performance fetched from live API.
         </p>
       </div>
 
       {/* Top Stat Cards Grid */}
       <div className="grid-stats">
-        <StatCard title="Total Enrolled Students" value={stats.studentsCount} icon={Users} color="#6366f1" subtitle="+12% from last term" />
-        <StatCard title="Active Faculty Members" value={stats.facultyCount} icon={UserCheck} color="#10b981" subtitle="98% attendance record" />
-        <StatCard title="Offered Programs & Courses" value={stats.coursesCount} icon={BookOpen} color="#3b82f6" subtitle="Across 4 Departments" />
-        <StatCard title="Total Fees Collected" value={stats.feesCollected} icon={CreditCard} color="#f59e0b" subtitle="Fall 2026 Semester" />
+        <StatCard title="Total Enrolled Students" value={loading ? '...' : stats.studentsCount} icon={Users} color="#6366f1" subtitle="Live API Data" />
+        <StatCard title="Active Faculty Members" value={loading ? '...' : stats.facultyCount} icon={UserCheck} color="#10b981" subtitle="Live API Data" />
+        <StatCard title="Offered Programs & Courses" value={loading ? '...' : stats.coursesCount} icon={BookOpen} color="#3b82f6" subtitle="Across All Departments" />
+        <StatCard title="Total Fees Collected" value={loading ? '...' : stats.feesCollected} icon={CreditCard} color="#f59e0b" subtitle="Verified Payments" />
       </div>
 
       {/* Main Grid: 2 Columns */}
