@@ -1,0 +1,10 @@
+const express = require('express');
+const router = express.Router();
+const { getFaculty, createFaculty, updateFaculty, deleteFaculty } = require('../controllers/facultyController');
+
+router.get('/', getFaculty);
+router.post('/', createFaculty);
+router.put('/:id', updateFaculty);
+router.delete('/:id', deleteFaculty);
+
+module.exports = router;
