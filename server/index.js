@@ -9,14 +9,19 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Routes
+// Legacy Routes
 app.use('/api/meetings', require('./routes/meetings'));
 app.use('/api/courses', require('./routes/courses'));
 app.use('/api/contact', require('./routes/contact'));
 
+// New Enterprise Platform Routes
+app.use('/api/auth', require('./routes/authRoutes'));
+app.use('/api/ai', require('./routes/aiRoutes'));
+app.use('/api/dashboard', require('./routes/dashboardRoutes'));
+
 // Health check
 app.get('/api', (req, res) => {
-  res.json({ message: 'EduNova API is running!' });
+  res.json({ message: 'EduNova AI LMS & ERP Platform API is running!' });
 });
 
 // Connect to MongoDB and start server
