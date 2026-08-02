@@ -5,7 +5,7 @@ import SubHeader from '../components/SubHeader';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
-const API = '/api';
+const API = 'http://localhost:5000/api';
 
 function MeetingDetails() {
   const { id } = useParams();
