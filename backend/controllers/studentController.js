@@ -1,11 +1,12 @@
 const Student = require('../models/Student');
 
-// In-memory data store for quick fallback
+// Authentic OpenEduCat Demo Students Data
 let memoryStudents = [
-  { _id: '1', studentId: 'STU-2026-001', name: 'Alex Johnson', email: 'alex.j@edunova.edu', phone: '+1 555-0192', gender: 'Male', dob: '2003-05-14', course: 'Computer Science', batch: '2023-2027', rollNo: 'CS-01', parentName: 'Robert Johnson', parentPhone: '+1 555-0190', address: '123 University Ave', status: 'Enrolled' },
-  { _id: '2', studentId: 'STU-2026-002', name: 'Sophia Chen', email: 'sophia.c@edunova.edu', phone: '+1 555-0193', gender: 'Female', dob: '2004-02-18', course: 'Software Engineering', batch: '2024-2028', rollNo: 'SE-04', parentName: 'David Chen', parentPhone: '+1 555-0191', address: '456 Innovation Blvd', status: 'Enrolled' },
-  { _id: '3', studentId: 'STU-2026-003', name: 'Marcus Vance', email: 'marcus.v@edunova.edu', phone: '+1 555-0194', gender: 'Male', dob: '2003-09-22', course: 'Business Administration', batch: '2023-2027', rollNo: 'BA-12', parentName: 'Sarah Vance', parentPhone: '+1 555-0195', address: '789 Academy Rd', status: 'Enrolled' },
-  { _id: '4', studentId: 'STU-2026-004', name: 'Emily Davis', email: 'emily.d@edunova.edu', phone: '+1 555-0196', gender: 'Female', dob: '2002-11-05', course: 'Data Science', batch: '2022-2026', rollNo: 'DS-02', parentName: 'Michael Davis', parentPhone: '+1 555-0197', address: '321 Scholar Way', status: 'Graduated' }
+  { _id: '1', studentId: 'STU-2026-001', name: 'Emma J Parker', email: 'emmaparker@example.com', phone: '+1 212-555-0118', gender: 'Female', dob: '1992-05-06', course: 'Computer Science', batch: '2023-2027', rollNo: 'CS-01', parentName: 'Robert Parker', parentPhone: '+1 212-555-0100', address: '350 5th Avenue, New York, NY', status: 'Enrolled' },
+  { _id: '2', studentId: 'STU-2026-002', name: 'James M Garcia', email: 'jamesgarcia@example.com', phone: '+49 30-555-0178', gender: 'Male', dob: '1989-11-05', course: 'Software Engineering', batch: '2024-2028', rollNo: 'SE-04', parentName: 'Michael Garcia', parentPhone: '+49 30-555-0100', address: 'Alexanderplatz 7, Berlin', status: 'Enrolled' },
+  { _id: '3', studentId: 'STU-2026-003', name: 'Priya R Reddy', email: 'priyareddy@example.com', phone: '+91 40-555-0199', gender: 'Female', dob: '1994-08-12', course: 'Business Administration', batch: '2023-2027', rollNo: 'BA-12', parentName: 'Ramesh Reddy', parentPhone: '+91 40-555-0100', address: 'Jubilee Hills, Hyderabad', status: 'Enrolled' },
+  { _id: '4', studentId: 'STU-2026-004', name: 'Alex Johnson', email: 'alex.j@edunova.edu', phone: '+1 555-0192', gender: 'Male', dob: '2003-05-14', course: 'Data Science', batch: '2022-2026', rollNo: 'DS-02', parentName: 'Robert Johnson', parentPhone: '+1 555-0190', address: '123 University Ave', status: 'Enrolled' },
+  { _id: '5', studentId: 'STU-2026-005', name: 'Sophia Chen', email: 'sophia.c@edunova.edu', phone: '+1 555-0193', gender: 'Female', dob: '2004-02-18', course: 'Software Engineering', batch: '2024-2028', rollNo: 'SE-08', parentName: 'David Chen', parentPhone: '+1 555-0191', address: '456 Innovation Blvd', status: 'Enrolled' }
 ];
 
 const getStudents = async (req, res) => {

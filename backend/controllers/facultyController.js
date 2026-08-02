@@ -1,9 +1,10 @@
 const Faculty = require('../models/Faculty');
 
 let memoryFaculty = [
-  { _id: '1', facultyId: 'FAC-2026-101', name: 'Dr. Alan Turing', email: 'alan.turing@edunova.edu', phone: '+1 555-4011', department: 'Computer Science', designation: 'Professor', qualification: 'Ph.D in AI & Algorithms', subjectsAssigned: ['Data Structures', 'Artificial Intelligence'], joiningDate: '2019-08-15', status: 'Active' },
-  { _id: '2', facultyId: 'FAC-2026-102', name: 'Prof. Grace Hopper', email: 'grace.h@edunova.edu', phone: '+1 555-4012', department: 'Software Engineering', designation: 'Associate Professor', qualification: 'Ph.D in Software Systems', subjectsAssigned: ['Software Architecture', 'Compiler Design'], joiningDate: '2020-01-10', status: 'Active' },
-  { _id: '3', facultyId: 'FAC-2026-103', name: 'Dr. Richard Feynman', email: 'rfeynman@edunova.edu', phone: '+1 555-4013', department: 'Physics & Electronics', designation: 'Professor', qualification: 'Ph.D in Quantum Electrodynamics', subjectsAssigned: ['Digital Electronics', 'Quantum Computing'], joiningDate: '2018-03-01', status: 'Active' }
+  { _id: '1', facultyId: 'FAC-2026-101', name: 'William D Mitchell', email: 'williammitchell@example.com', phone: '+358 9-555-0215', department: 'Computer Science', designation: 'Professor', qualification: 'Ph.D in Computer Systems', subjectsAssigned: ['Data Structures', 'Algorithms'], joiningDate: '2018-02-01', status: 'Active' },
+  { _id: '2', facultyId: 'FAC-2026-102', name: 'John C White', email: 'johnwhite@example.com', phone: '+33 1-555-0200', department: 'Software Engineering', designation: 'Associate Professor', qualification: 'Ph.D in Software Engineering', subjectsAssigned: ['Software Architecture', 'Compiler Design'], joiningDate: '2019-02-05', status: 'Active' },
+  { _id: '3', facultyId: 'FAC-2026-103', name: 'Dr. Alan Turing', email: 'alan.turing@edunova.edu', phone: '+1 555-4011', department: 'Computer Science', designation: 'Professor', qualification: 'Ph.D in AI & Computing', subjectsAssigned: ['Artificial Intelligence', 'Machine Learning'], joiningDate: '2019-08-15', status: 'Active' },
+  { _id: '4', facultyId: 'FAC-2026-104', name: 'Prof. Grace Hopper', email: 'grace.h@edunova.edu', phone: '+1 555-4012', department: 'Software Engineering', designation: 'Associate Professor', qualification: 'Ph.D in Systems', subjectsAssigned: ['Compiler Design', 'Operating Systems'], joiningDate: '2020-01-10', status: 'Active' }
 ];
 
 const getFaculty = async (req, res) => {
