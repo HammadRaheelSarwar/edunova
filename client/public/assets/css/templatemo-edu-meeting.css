@@ -777,44 +777,31 @@ services
   position: relative;
   z-index: 10;
   width: 100%;
+  overflow: hidden;
 }
 
-.owl-carousel {
-  display: block;
+.services-marquee-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 15px 0 35px 0;
+  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
 }
 
-.owl-carousel:not(.owl-loaded) {
-  display: flex !important;
-  flex-wrap: nowrap !important;
-  overflow-x: auto !important;
-  scroll-behavior: smooth;
-  gap: 25px;
-  padding-bottom: 15px;
-  -webkit-overflow-scrolling: touch;
+.services-marquee-track {
+  display: flex;
+  gap: 30px;
+  width: max-content;
+  animation: continuousMarqueeL2R 35s linear infinite;
+  will-change: transform;
 }
 
-.owl-carousel:not(.owl-loaded)::-webkit-scrollbar {
-  height: 6px;
-}
-.owl-carousel:not(.owl-loaded)::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-}
-.owl-carousel:not(.owl-loaded)::-webkit-scrollbar-thumb {
-  background: #a12c2f;
-  border-radius: 4px;
+.services-marquee-track:hover {
+  animation-play-state: paused;
 }
 
-.owl-carousel:not(.owl-loaded) .item {
-  flex: 0 0 280px !important;
-  min-width: 280px !important;
-}
-
-.owl-carousel .owl-stage {
-  min-width: 100%;
-}
-
-.services .item {
+.service-card-item {
   background-image: url(../images/service-item-bg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -822,7 +809,52 @@ services
   border-radius: 20px;
   text-align: center;
   color: #fff;
-  padding: 40px;
+  padding: 35px 28px;
+  width: 310px;
+  flex: 0 0 310px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+  transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.35s ease;
+  cursor: pointer;
+}
+
+.service-card-item:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 20px 40px rgba(245, 164, 37, 0.3), 0 14px 28px rgba(0, 0, 0, 0.5);
+}
+
+.service-card-item .icon {
+  max-width: 60px;
+  margin: 0 auto;
+  transition: transform 0.35s ease;
+}
+
+.service-card-item:hover .icon {
+  transform: scale(1.18) rotate(6deg);
+}
+
+.service-card-item h4 {
+  margin-top: 22px;
+  margin-bottom: 12px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.service-card-item p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 13.5px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@keyframes continuousMarqueeL2R {
+  0% {
+    transform: translate3d(-33.333%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .services .item .icon {

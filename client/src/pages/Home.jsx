@@ -49,6 +49,14 @@ const accordionData = [
   },
 ];
 
+const SERVICES = [
+  { icon: '/assets/images/service-icon-01.png', title: 'Best Education', desc: 'Comprehensive digital environment combining live video meetings, course management, and smart AI tutoring.' },
+  { icon: '/assets/images/service-icon-02.png', title: 'Best Teachers', desc: 'Interactive tools, automated assignment creation, quiz generation, and quick rubric evaluations.' },
+  { icon: '/assets/images/service-icon-03.png', title: 'Best Students', desc: '24/7 interactive assistance from our AI Study Assistant with personalized progress tracking.' },
+  { icon: '/assets/images/service-icon-02.png', title: 'Online Meeting', desc: 'Schedule and attend HD virtual classrooms with screen sharing, chat, and recorded archives.' },
+  { icon: '/assets/images/service-icon-03.png', title: 'Best Networking', desc: 'Building collaborative academic networks across international learning institutions.' },
+];
+
 const DEFAULT_MEETINGS = [
   {
     _id: '1',
@@ -310,55 +318,21 @@ function Home() {
         </div>
       </section>
 
-      {/* ── Services Carousel ── */}
+      {/* ── Services Continuous Infinite Marquee ── */}
       <section className="services">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12">
-              <div className="owl-service-item owl-carousel">
-
-                <div className="item">
-                  <div className="icon"><img src="/assets/images/service-icon-01.png" alt="" /></div>
-                  <div className="down-content">
-                    <h4>Best Education</h4>
-                    <p>Suspendisse tempor mauris a sem elementum bibendum. Praesent facilisis massa non vestibulum.</p>
-                  </div>
+        <div className="services-marquee-container">
+          <div className="services-marquee-track">
+            {[...SERVICES, ...SERVICES, ...SERVICES].map((s, idx) => (
+              <div className="service-card-item" key={idx}>
+                <div className="icon">
+                  <img src={s.icon} alt={s.title} />
                 </div>
-
-                <div className="item">
-                  <div className="icon"><img src="/assets/images/service-icon-02.png" alt="" /></div>
-                  <div className="down-content">
-                    <h4>Best Teachers</h4>
-                    <p>Suspendisse tempor mauris a sem elementum bibendum. Praesent facilisis massa non vestibulum.</p>
-                  </div>
+                <div className="down-content">
+                  <h4>{s.title}</h4>
+                  <p>{s.desc}</p>
                 </div>
-
-                <div className="item">
-                  <div className="icon"><img src="/assets/images/service-icon-03.png" alt="" /></div>
-                  <div className="down-content">
-                    <h4>Best Students</h4>
-                    <p>Suspendisse tempor mauris a sem elementum bibendum. Praesent facilisis massa non vestibulum.</p>
-                  </div>
-                </div>
-
-                <div className="item">
-                  <div className="icon"><img src="/assets/images/service-icon-02.png" alt="" /></div>
-                  <div className="down-content">
-                    <h4>Online Meeting</h4>
-                    <p>Suspendisse tempor mauris a sem elementum bibendum. Praesent facilisis massa non vestibulum.</p>
-                  </div>
-                </div>
-
-                <div className="item">
-                  <div className="icon"><img src="/assets/images/service-icon-03.png" alt="" /></div>
-                  <div className="down-content">
-                    <h4>Best Networking</h4>
-                    <p>Suspendisse tempor mauris a sem elementum bibendum. Praesent facilisis massa non vestibulum.</p>
-                  </div>
-                </div>
-
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
