@@ -785,14 +785,29 @@ services
 
 .owl-carousel:not(.owl-loaded) {
   display: flex !important;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+  scroll-behavior: smooth;
+  gap: 25px;
+  padding-bottom: 15px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.owl-carousel:not(.owl-loaded)::-webkit-scrollbar {
+  height: 6px;
+}
+.owl-carousel:not(.owl-loaded)::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+.owl-carousel:not(.owl-loaded)::-webkit-scrollbar-thumb {
+  background: #a12c2f;
+  border-radius: 4px;
 }
 
 .owl-carousel:not(.owl-loaded) .item {
-  flex: 1;
-  min-width: 250px;
+  flex: 0 0 280px !important;
+  min-width: 280px !important;
 }
 
 .owl-carousel .owl-stage {
