@@ -234,8 +234,11 @@ https://templatemo.com/tm-569-edu-meeting
         };
 
         $('.main-menu, .responsive-menu, .scroll-to-section').on('click', 'a', function (e) {
-          e.preventDefault();
-          showSection($(this).attr('href'), true);
+          var href = $(this).attr('href');
+          if (href && href.startsWith('#') && !href.startsWith('#/')) {
+            e.preventDefault();
+            showSection(href, true);
+          }
         });
 
         $(window).scroll(function () {
