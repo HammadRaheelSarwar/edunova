@@ -30,21 +30,21 @@ function Accordion({ title, body, last, defaultOpen }) {
 
 const accordionData = [
   {
-    title: 'About Edu Meeting HTML Template',
-    body: 'If you want to get the latest collection of HTML CSS templates for your websites, you may visit <a rel="nofollow" href="https://www.toocss.com/" target="_blank">Too CSS website</a>. If you need a working contact form script, please visit <a href="https://templatemo.com/contact" target="_parent">our contact page</a> for more info.',
+    title: 'About EduNova Learning Ecosystem',
+    body: 'EduNova provides a comprehensive digital environment combining live video meetings, course management, smart AI tutoring, and real-time performance analytics for modern schools and universities.',
     defaultOpen: true,
   },
   {
-    title: 'HTML CSS Bootstrap Layout',
-    body: 'Etiam posuere metus orci, vel consectetur elit imperdiet eu. Cras ipsum magna, maximus at semper sit amet, eleifend eget neque. Nunc facilisis quam purus, sed vulputate augue interdum vitae. Aliquam a elit massa.<br><br>Nulla malesuada elit lacus, ac ultricies massa varius sed. Etiam eu metus eget nibh consequat aliquet. Proin fringilla, quam at euismod porttitor, odio odio tempus ligula, ut feugiat ex erat nec mauris. Donec viverra velit eget lectus sollicitudin tincidunt.',
+    title: 'AI Tutor & Automated Grading',
+    body: 'Students get 24/7 interactive assistance from our AI Study Assistant, while teachers benefit from automated assignment creation, quiz generation, and quick rubric evaluation.',
   },
   {
-    title: 'Please tell your friends',
-    body: 'Ut vehicula mauris est, sed sodales justo rhoncus eu. Morbi porttitor quam velit, at ullamcorper justo suscipit sit amet. Quisque at suscipit mi, non efficitur velit.<br><br>Cras et tortor semper, placerat eros sit amet, porta est. Mauris porttitor sapien et quam volutpat luctus. Nullam sodales ipsum ac neque ultricies varius.',
+    title: 'Multi-Portal Management',
+    body: 'Dedicated dashboards allow Students to submit work, Teachers to track progress, Parents to monitor grades, and Administrators to oversee ERP operations seamlessly.',
   },
   {
-    title: 'Share this to your colleagues',
-    body: 'Maecenas suscipit enim libero, vel lobortis justo condimentum id. Interdum et malesuada fames ac ante ipsum primis in faucibus.<br><br>Sed eleifend metus sit amet magna tristique, posuere laoreet arcu semper. Nulla pellentesque ut tortor sit amet maximus. In eu libero ullamcorper, semper nisi quis, convallis nisi.',
+    title: 'Interactive Live Meetings & Classes',
+    body: 'Schedule and attend HD virtual classrooms with screen sharing, chat, file distribution, and recorded lecture archives.',
     last: true,
   },
 ];
@@ -213,18 +213,14 @@ function Home() {
             <div className="row">
               <div className="col-lg-12">
                 <div className="caption">
-                  <h6>Hello Students</h6>
-                  <h2>Welcome to Education</h2>
+                  <h6>Empowering Future Learners</h6>
+                  <h2>WELCOME TO EDUNOVA PLATFORM</h2>
                   <p>
-                    This is an edu meeting HTML CSS template provided by{' '}
-                    <a rel="nofollow" href="https://templatemo.com/page/1" target="_blank">TemplateMo website</a>.
-                    This is a Bootstrap v5.1.3 layout. The video background is taken from Pexels website,
-                    a group of young people by{' '}
-                    <a rel="nofollow" href="https://www.pexels.com/@pressmaster" target="_blank">Pressmaster</a>.
+                    EduNova is an all-in-one AI-driven educational ecosystem featuring interactive virtual classrooms, smart study assistants, automated grading, and dedicated portals for students, teachers, parents, and administrators.
                   </p>
                   <div className="main-button-red">
                     <div className="scroll-to-section">
-                      <a href="#contact" onClick={scrollTo('contact')}>Join Us Now!</a>
+                      <a href="#contact" onClick={scrollTo('contact')}>Explore Portals & AI</a>
                     </div>
                   </div>
                 </div>
