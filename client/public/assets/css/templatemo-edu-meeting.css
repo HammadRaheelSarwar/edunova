@@ -779,6 +779,10 @@ services
   width: 100%;
 }
 
+.owl-carousel {
+  display: block;
+}
+
 .owl-carousel:not(.owl-loaded) {
   display: flex !important;
   flex-wrap: wrap;
@@ -789,6 +793,10 @@ services
 .owl-carousel:not(.owl-loaded) .item {
   flex: 1;
   min-width: 250px;
+}
+
+.owl-carousel .owl-stage {
+  min-width: 100%;
 }
 
 .services .item {

@@ -142,30 +142,27 @@ function Home() {
 
   // ── Load plugins + init carousels after data & DOM are ready ─────────────
   useEffect(() => {
-    if (meetings.length === 0 || courses.length === 0) return;
-    if (pluginsReady.current) {
-      // Re-init if data changed but plugins already loaded
-      initCarousels();
-      return;
-    }
-
+    let timer;
     loadAllPlugins().then(() => {
       pluginsReady.current = true;
-      // Small delay to ensure React has fully painted the DOM
-      setTimeout(initCarousels, 100);
+      // Defer carousel init to give React time to paint DOM changes
+      timer = setTimeout(initCarousels, 150);
     }).catch(console.error);
+
+    return () => clearTimeout(timer);
   }, [meetings, courses]);
 
   function initCarousels() {
     const $ = window.$;
     if (!$ || !$.fn.owlCarousel) return;
 
-    // Destroy and reinit services carousel
-    if ($('.owl-service-item').length) {
-      if ($('.owl-service-item').hasClass('owl-loaded')) {
-        $('.owl-service-item').trigger('destroy.owl.carousel').removeClass('owl-loaded owl-drag');
+    // Destroy and reinit services carousel safely
+    const $service = $('.owl-service-item');
+    if ($service.length) {
+      if ($service.hasClass('owl-loaded')) {
+        $service.trigger('destroy.owl.carousel').removeClass('owl-loaded owl-drag');
       }
-      $('.owl-service-item').owlCarousel({
+      $service.owlCarousel({
         items: 3,
         loop: true,
         dots: true,
@@ -180,12 +177,13 @@ function Home() {
       });
     }
 
-    // Destroy and reinit courses carousel
-    if ($('.owl-courses-item').length) {
-      if ($('.owl-courses-item').hasClass('owl-loaded')) {
-        $('.owl-courses-item').trigger('destroy.owl.carousel').removeClass('owl-loaded owl-drag');
+    // Destroy and reinit courses carousel safely
+    const $courses = $('.owl-courses-item');
+    if ($courses.length) {
+      if ($courses.hasClass('owl-loaded')) {
+        $courses.trigger('destroy.owl.carousel').removeClass('owl-loaded owl-drag');
       }
-      $('.owl-courses-item').owlCarousel({
+      $courses.owlCarousel({
         items: 4,
         loop: true,
         dots: true,
