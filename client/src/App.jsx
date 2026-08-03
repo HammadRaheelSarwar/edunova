@@ -1,5 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react';
-import { BrowserRouter as Router, Routes as RouteList, Route as RouteItem } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Meetings from './pages/Meetings';
 import MeetingDetails from './pages/MeetingDetails';
@@ -13,17 +12,17 @@ import AdminDashboard from './pages/AdminDashboard';
 function App() {
   return (
     <Router>
-      <RouteList>
-        <RouteItem path="/" element={<Home />} />
-        <RouteItem path="/meetings" element={<Meetings />} />
-        <RouteItem path="/meetings/:id" element={<MeetingDetails />} />
-        <RouteItem path="/ai-assistant" element={<AiStudyAssistant />} />
-        <RouteItem path="/teacher-ai" element={<TeacherAiStudio />} />
-        <RouteItem path="/dashboard/student" element={<StudentDashboard />} />
-        <RouteItem path="/dashboard/teacher" element={<TeacherDashboard />} />
-        <RouteItem path="/dashboard/parent" element={<ParentDashboard />} />
-        <RouteItem path="/dashboard/admin" element={<AdminDashboard />} />
-      </RouteList>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/meetings" element={<Meetings />} />
+        <Route path="/meetings/:id" element={<MeetingDetails />} />
+        <Route path="/ai-assistant" element={<AiStudyAssistant />} />
+        <Route path="/teacher-ai" element={<TeacherAiStudio />} />
+        <Route path="/dashboard/student" element={<StudentDashboard />} />
+        <Route path="/dashboard/teacher" element={<TeacherDashboard />} />
+        <Route path="/dashboard/parent" element={<ParentDashboard />} />
+        <Route path="/dashboard/admin" element={<AdminDashboard />} />
+      </Routes>
     </Router>
   );
 }
