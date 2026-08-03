@@ -7,17 +7,75 @@ import Footer from '../components/Footer';
 
 const API = 'http://localhost:5000/api';
 
+const DEFAULT_DETAILS = {
+  '1': {
+    title: 'New Lecturers Meeting',
+    date: '12',
+    month: 'Nov',
+    price: '$14.00',
+    image: '/assets/images/meeting-01.jpg',
+    description: 'Interactive orientation session for new university lecturers and AI integration.',
+    fullDescription: 'This is an EduNova meeting session for new university lecturers to explore automated grading, digital course distribution, and modern pedagogical tools.',
+    location: 'Recreio dos Bandeirantes, Rio de Janeiro - RJ, 22795-008, Brazil',
+    hours: 'Monday - Friday: 07:00 AM - 13:00 PM\nSaturday - Sunday: 09:00 AM - 15:00 PM',
+    phone: '010-020-0340 / 090-080-0760',
+  },
+  '2': {
+    title: 'Online Teaching Techniques',
+    date: '14',
+    month: 'Nov',
+    price: '$22.00',
+    image: '/assets/images/meeting-02.jpg',
+    description: 'Modern pedagogical strategies for remote and hybrid classroom management.',
+    fullDescription: 'A comprehensive session on online teaching techniques for educators, covering active student participation and interactive tools.',
+    location: 'Recreio dos Bandeirantes, Rio de Janeiro - RJ, 22795-008, Brazil',
+    hours: 'Monday - Friday: 07:00 AM - 13:00 PM\nSaturday - Sunday: 09:00 AM - 15:00 PM',
+    phone: '010-020-0340 / 090-080-0760',
+  },
+  '3': {
+    title: 'Network Teaching Concept',
+    date: '16',
+    month: 'Nov',
+    price: '$24.00',
+    image: '/assets/images/meeting-03.jpg',
+    description: 'Building collaborative academic networks across international institutions.',
+    fullDescription: 'Explore network-based teaching and collaborative virtual exchange programs across global partner universities.',
+    location: 'Recreio dos Bandeirantes, Rio de Janeiro - RJ, 22795-008, Brazil',
+    hours: 'Monday - Friday: 07:00 AM - 13:00 PM',
+    phone: '010-020-0340',
+  },
+  '4': {
+    title: 'Online Teaching Tools',
+    date: '18',
+    month: 'Nov',
+    price: '$32.00',
+    image: '/assets/images/meeting-04.jpg',
+    description: 'Deep dive into virtual whiteboards, automated grading, and AI tutors.',
+    fullDescription: 'Discover the most effective online teaching tools available today, from automated assignment rubrics to real-time analytics.',
+    location: 'Recreio dos Bandeirantes, Rio de Janeiro - RJ, 22795-008, Brazil',
+    hours: 'Monday - Friday: 07:00 AM - 13:00 PM',
+    phone: '010-020-0340',
+  },
+};
+
 function MeetingDetails() {
   const { id } = useParams();
-  const [meeting, setMeeting] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [meeting, setMeeting] = useState(DEFAULT_DETAILS[id] || DEFAULT_DETAILS['1']);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   useEffect(() => {
     setLoading(true);
     axios.get(`${API}/meetings/${id}`)
-      .then((r) => setMeeting(r.data))
-      .catch(() => setError('Meeting not found.'))
+      .then((r) => { if (r.data) setMeeting(r.data); })
+      .catch(() => {
+        if (DEFAULT_DETAILS[id]) {
+          setMeeting(DEFAULT_DETAILS[id]);
+          setError('');
+        } else {
+          setMeeting(DEFAULT_DETAILS['1']);
+        }
+      })
       .finally(() => setLoading(false));
   }, [id]);
 

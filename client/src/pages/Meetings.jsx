@@ -14,13 +14,74 @@ const FILTERS = [
   { label: 'Attractive',   value: 'att' },
 ];
 
-const ITEMS_PER_PAGE = 9;
+const DEFAULT_MEETINGS = [
+  {
+    _id: '1',
+    title: 'New Lecturers Meeting',
+    date: '12',
+    month: 'Nov',
+    price: '$14.00',
+    image: '/assets/images/meeting-01.jpg',
+    description: 'Interactive orientation session for new university lecturers and AI integration.',
+    categories: ['all', 'soon'],
+  },
+  {
+    _id: '2',
+    title: 'Online Teaching Techniques',
+    date: '14',
+    month: 'Nov',
+    price: '$22.00',
+    image: '/assets/images/meeting-02.jpg',
+    description: 'Modern pedagogical strategies for remote and hybrid classroom management.',
+    categories: ['all', 'imp'],
+  },
+  {
+    _id: '3',
+    title: 'Network Teaching Concept',
+    date: '16',
+    month: 'Nov',
+    price: '$24.00',
+    image: '/assets/images/meeting-03.jpg',
+    description: 'Building collaborative academic networks across international institutions.',
+    categories: ['all', 'soon'],
+  },
+  {
+    _id: '4',
+    title: 'Online Teaching Tools',
+    date: '18',
+    month: 'Nov',
+    price: '$32.00',
+    image: '/assets/images/meeting-04.jpg',
+    description: 'Deep dive into virtual whiteboards, automated grading, and AI tutors.',
+    categories: ['all', 'att'],
+  },
+  {
+    _id: '5',
+    title: 'Higher Education Summit',
+    date: '22',
+    month: 'Nov',
+    price: '$48.00',
+    image: '/assets/images/meeting-01.jpg',
+    description: 'Keynote discussions on global university accreditation and digital diplomas.',
+    categories: ['all', 'imp'],
+  },
+  {
+    _id: '6',
+    title: 'Student Success Workshops',
+    date: '24',
+    month: 'Nov',
+    price: '$18.00',
+    image: '/assets/images/meeting-02.jpg',
+    description: 'Empowering students with effective study habits and AI study assistance.',
+    categories: ['all', 'soon', 'att'],
+  },
+];
 
 function Meetings() {
-  const [meetings, setMeetings] = useState([]);
+  const [meetings, setMeetings] = useState(DEFAULT_MEETINGS);
   const [activeFilter, setActiveFilter] = useState('all');
   const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -29,10 +90,25 @@ function Meetings() {
       : `${API}/meetings?filter=${activeFilter}`;
 
     axios.get(url)
-      .then((r) => { setMeetings(r.data); setPage(1); })
-      .catch(console.error)
+      .then((r) => {
+        if (r.data && r.data.length > 0) setMeetings(r.data);
+        else filterDefaultMeetings(activeFilter);
+        setPage(1);
+      })
+      .catch(() => {
+        filterDefaultMeetings(activeFilter);
+        setPage(1);
+      })
       .finally(() => setLoading(false));
   }, [activeFilter]);
+
+  function filterDefaultMeetings(filter) {
+    if (filter === 'all') {
+      setMeetings(DEFAULT_MEETINGS);
+    } else {
+      setMeetings(DEFAULT_MEETINGS.filter((m) => m.categories.includes(filter)));
+    }
+  }
 
   const totalPages = Math.ceil(meetings.length / ITEMS_PER_PAGE);
   const paginated = meetings.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);

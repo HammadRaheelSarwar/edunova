@@ -49,20 +49,95 @@ const accordionData = [
   },
 ];
 
+const DEFAULT_MEETINGS = [
+  {
+    _id: '1',
+    title: 'New Lecturers Meeting',
+    date: '12',
+    month: 'Nov',
+    price: '$14.00',
+    image: '/assets/images/meeting-01.jpg',
+    description: 'Interactive orientation session for new university lecturers and AI integration.',
+  },
+  {
+    _id: '2',
+    title: 'Online Teaching Techniques',
+    date: '14',
+    month: 'Nov',
+    price: '$22.00',
+    image: '/assets/images/meeting-02.jpg',
+    description: 'Modern pedagogical strategies for remote and hybrid classroom management.',
+  },
+  {
+    _id: '3',
+    title: 'Network Teaching Concept',
+    date: '16',
+    month: 'Nov',
+    price: '$24.00',
+    image: '/assets/images/meeting-03.jpg',
+    description: 'Building collaborative academic networks across international institutions.',
+  },
+  {
+    _id: '4',
+    title: 'Online Teaching Tools',
+    date: '18',
+    month: 'Nov',
+    price: '$32.00',
+    image: '/assets/images/meeting-04.jpg',
+    description: 'Deep dive into virtual whiteboards, automated grading, and AI tutors.',
+  },
+];
+
+const DEFAULT_COURSES = [
+  {
+    _id: 'c1',
+    title: 'Advanced AI & Machine Learning in Education',
+    price: '$160',
+    rating: 5,
+    image: '/assets/images/course-01.jpg',
+  },
+  {
+    _id: 'c2',
+    title: 'Full-Stack Modern Web Development',
+    price: '$180',
+    rating: 5,
+    image: '/assets/images/course-02.jpg',
+  },
+  {
+    _id: 'c3',
+    title: 'Digital Pedagogy & E-Learning Design',
+    price: '$140',
+    rating: 5,
+    image: '/assets/images/course-03.jpg',
+  },
+  {
+    _id: 'c4',
+    title: 'Data Science & Educational Analytics',
+    price: '$200',
+    rating: 5,
+    image: '/assets/images/course-04.jpg',
+  },
+];
+
 // ─── Home Page ────────────────────────────────────────────────────────────
 function Home() {
-  const [meetings, setMeetings]     = useState([]);
-  const [courses, setCourses]       = useState([]);
+  const [meetings, setMeetings]     = useState(DEFAULT_MEETINGS);
+  const [courses, setCourses]       = useState(DEFAULT_COURSES);
   const [formData, setFormData]     = useState({ name: '', email: '', subject: '', message: '' });
   const [formMsg, setFormMsg]       = useState('');
   const [formError, setFormError]   = useState('');
   const [submitting, setSubmitting] = useState(false);
   const pluginsReady                = useRef(false);
 
-  // ── Fetch API data ───────────────────────────────────────────────────────
+  // ── Fetch API data with fallback ──────────────────────────────────────────
   useEffect(() => {
-    axios.get(`${API}/meetings`).then((r) => setMeetings(r.data.slice(0, 4))).catch(console.error);
-    axios.get(`${API}/courses`).then((r) => setCourses(r.data)).catch(console.error);
+    axios.get(`${API}/meetings`)
+      .then((r) => { if (r.data && r.data.length > 0) setMeetings(r.data.slice(0, 4)); })
+      .catch(() => setMeetings(DEFAULT_MEETINGS));
+
+    axios.get(`${API}/courses`)
+      .then((r) => { if (r.data && r.data.length > 0) setCourses(r.data); })
+      .catch(() => setCourses(DEFAULT_COURSES));
   }, []);
 
   // ── Load plugins + init carousels after data & DOM are ready ─────────────
