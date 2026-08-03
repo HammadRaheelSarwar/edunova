@@ -1,5 +1,4 @@
-import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import Meetings from './pages/Meetings';
 import MeetingDetails from './pages/MeetingDetails';
@@ -10,20 +9,9 @@ import TeacherDashboard from './pages/TeacherDashboard';
 import ParentDashboard from './pages/ParentDashboard';
 import AdminDashboard from './pages/AdminDashboard';
 
-function PathRedirect() {
-  useEffect(() => {
-    const path = window.location.pathname;
-    if (path && path !== '/' && path !== '/index.html' && !window.location.hash) {
-      window.location.replace('/#' + path);
-    }
-  }, []);
-  return null;
-}
-
 function App() {
   return (
     <Router>
-      <PathRedirect />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/meetings" element={<Meetings />} />
@@ -34,6 +22,15 @@ function App() {
         <Route path="/dashboard/teacher" element={<TeacherDashboard />} />
         <Route path="/dashboard/parent" element={<ParentDashboard />} />
         <Route path="/dashboard/admin" element={<AdminDashboard />} />
+
+        {/* HTML Fallbacks */}
+        <Route path="/student-dashboard.html" element={<StudentDashboard />} />
+        <Route path="/teacher-dashboard.html" element={<TeacherDashboard />} />
+        <Route path="/parent-dashboard.html" element={<ParentDashboard />} />
+        <Route path="/admin-dashboard.html" element={<AdminDashboard />} />
+        <Route path="/ai-assistant.html" element={<AiStudyAssistant />} />
+        <Route path="/teacher-ai.html" element={<TeacherAiStudio />} />
+        
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
