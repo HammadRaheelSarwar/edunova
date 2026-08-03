@@ -35,7 +35,7 @@ function Navbar() {
         <div className="row">
           <div className="col-12">
             <nav className="main-nav">
-              <Link to="/" className="logo">Edu Meeting</Link>
+              <Link to="/" className="logo">EduNova</Link>
 
               <ul className={`nav ${menuOpen ? 'nav--open' : ''}`}>
                 <li>
