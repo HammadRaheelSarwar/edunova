@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="EduNova - AI Study Assistant">
+    <meta name="author" content="EduNova">
+    <title>EduNova - AI Study Assistant & 24/7 AI Tutor</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-edu-meeting.css">
+  </head>
+
+<body>
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+      <div class="container">
+          <div class="row">
+              <div class="col-12">
+                  <nav class="main-nav">
+                      <a href="index.html" class="logo">EduNova</a>
+                      <ul class="nav">
+                          <li><a href="index.html">Home</a></li>
+                          <li><a href="meetings.html">Meetings</a></li>
+                          <li><a href="ai-assistant.html" class="active">AI Tutor</a></li>
+                          <li><a href="teacher-ai.html">Teacher AI</a></li>
+                          <li class="has-sub">
+                              <a href="javascript:void(0)">Dashboards</a>
+                              <ul class="sub-menu">
+                                  <li><a href="student-dashboard.html">Student Hub</a></li>
+                                  <li><a href="teacher-dashboard.html">Teacher Hub</a></li>
+                                  <li><a href="parent-dashboard.html">Parent Portal</a></li>
+                                  <li><a href="admin-dashboard.html">Admin & ERP</a></li>
+                              </ul>
+                          </li>
+                          <li><a href="index.html#courses">Courses</a></li> 
+                          <li><a href="index.html#contact">Contact Us</a></li> 
+                      </ul>        
+                      <a class='menu-trigger'>
+                          <span>Menu</span>
+                      </a>
+                  </nav>
+              </div>
+          </div>
+      </div>
+  </header>
+
+  <!-- Page Heading -->
+  <section class="heading-page header-text" id="top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h6>Flagship Feature</h6>
+          <h2>AI Study Assistant & 24/7 AI Tutor</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="meetings-page" id="meetings">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div style="background: #1f272b; padding: 30px; border-radius: 20px; color: #fff;">
+            <h4 style="color: #f5a425; margin-bottom: 15px;">24/7 AI Study Assistant Chat</h4>
+            
+            <div id="chat-container" style="background: #13191c; padding: 20px; border-radius: 15px; min-height: 250px; max-height: 350px; overflow-y: auto; margin-bottom: 20px;">
+              <div style="background: #1f272b; padding: 12px 18px; border-radius: 12px; margin-bottom: 12px; max-width: 80%;">
+                <strong style="color: #f5a425;">EduNova AI Tutor:</strong>
+                <p style="color: #fff; margin: 5px 0 0 0;">Hello! I am your 24/7 AI Tutor. Ask me any question, paste lesson notes, or request practice quizzes!</p>
+              </div>
+            </div>
+
+            <form id="ai-form" onsubmit="event.preventDefault(); askAi();">
+              <div style="display: flex; gap: 10px;">
+                <input type="text" id="ai-input" placeholder="Ask your AI Tutor a question..." required style="flex: 1; padding: 12px 20px; border-radius: 20px; border: none; background: #fff; color: #333; outline: none;">
+                <button type="submit" style="background: #a12c2f; color: #fff; border: none; padding: 12px 25px; border-radius: 20px; font-weight: bold; cursor: pointer;">Ask AI</button>
+              </div>
+            </form>
+
+            <hr style="border-color: #333; margin: 30px 0;">
+
+            <h5 style="color: #f5a425; margin-bottom: 15px;">Sample Study Flashcards</h5>
+            <div class="row">
+              <div class="col-md-6" style="margin-bottom: 15px;">
+                <div style="background: #13191c; padding: 20px; border-radius: 12px; border-left: 4px solid #f5a425;">
+                  <h6 style="color: #f5a425; margin-bottom: 5px;">Q: What is an Array?</h6>
+                  <p style="color: #ccc; margin: 0;">A: A contiguous memory data structure providing O(1) time complexity index lookup.</p>
+                </div>
+              </div>
+              <div class="col-md-6" style="margin-bottom: 15px;">
+                <div style="background: #13191c; padding: 20px; border-radius: 12px; border-left: 4px solid #28a745;">
+                  <h6 style="color: #28a745; margin-bottom: 5px;">Q: Define Photosynthesis</h6>
+                  <p style="color: #ccc; margin: 0;">A: Process by which plants synthesize glucose from carbon dioxide and water using sunlight.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p>Copyright &copy; 2024 EduNova Platform. All Rights Reserved.
+        <br>
+        Powered by: <a href="https://www.nexvoragroup.dev" target="_blank">Nexvora Dev</a>
+      </p>
+    </div>
+  </section>
+
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/custom.js"></script>
+
+  <script>
+    function askAi() {
+      var input = document.getElementById('ai-input');
+      var container = document.getElementById('chat-container');
+      var text = input.value.trim();
+      if (!text) return;
+
+      var userMsg = document.createElement('div');
+      userMsg.style.cssText = "background: #a12c2f; padding: 12px 18px; border-radius: 12px; margin-bottom: 12px; margin-left: auto; max-width: 80%; color: #fff;";
+      userMsg.innerHTML = "<strong>You:</strong><p style='margin: 5px 0 0 0;'>" + text + "</p>";
+      container.appendChild(userMsg);
+
+      input.value = "";
+      container.scrollTop = container.scrollHeight;
+
+      setTimeout(function() {
+        var aiMsg = document.createElement('div');
+        aiMsg.style.cssText = "background: #1f272b; padding: 12px 18px; border-radius: 12px; margin-bottom: 12px; max-width: 80%; color: #fff;";
+        aiMsg.innerHTML = "<strong style='color: #f5a425;'>EduNova AI Tutor:</strong><p style='margin: 5px 0 0 0;'>Great question regarding '" + text + "'! In your curriculum, this topic focuses on foundational analytical principles, structured problem-solving, and practical application.</p>";
+        container.appendChild(aiMsg);
+        container.scrollTop = container.scrollHeight;
+      }, 600);
+    }
+  </script>
+</body>
+</html>

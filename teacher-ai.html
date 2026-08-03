@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="EduNova - Teacher AI Studio">
+    <meta name="author" content="EduNova">
+    <title>EduNova - Teacher AI Studio & Lesson Generator</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-edu-meeting.css">
+  </head>
+
+<body>
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+      <div class="container">
+          <div class="row">
+              <div class="col-12">
+                  <nav class="main-nav">
+                      <a href="index.html" class="logo">EduNova</a>
+                      <ul class="nav">
+                          <li><a href="index.html">Home</a></li>
+                          <li><a href="meetings.html">Meetings</a></li>
+                          <li><a href="ai-assistant.html">AI Tutor</a></li>
+                          <li><a href="teacher-ai.html" class="active">Teacher AI</a></li>
+                          <li class="has-sub">
+                              <a href="javascript:void(0)">Dashboards</a>
+                              <ul class="sub-menu">
+                                  <li><a href="student-dashboard.html">Student Hub</a></li>
+                                  <li><a href="teacher-dashboard.html">Teacher Hub</a></li>
+                                  <li><a href="parent-dashboard.html">Parent Portal</a></li>
+                                  <li><a href="admin-dashboard.html">Admin & ERP</a></li>
+                              </ul>
+                          </li>
+                          <li><a href="index.html#courses">Courses</a></li> 
+                          <li><a href="index.html#contact">Contact Us</a></li> 
+                      </ul>        
+                      <a class='menu-trigger'>
+                          <span>Menu</span>
+                      </a>
+                  </nav>
+              </div>
+          </div>
+      </div>
+  </header>
+
+  <!-- Page Heading -->
+  <section class="heading-page header-text" id="top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h6>Teacher Workflows</h6>
+          <h2>AI Teacher Assistant & Lesson Generator</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="meetings-page" id="meetings">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div style="background: #1f272b; padding: 30px; border-radius: 20px; color: #fff;">
+            <h4 style="color: #f5a425; margin-bottom: 20px;">Generate AI Lesson Draft</h4>
+            
+            <form id="lesson-form" onsubmit="event.preventDefault(); generateLesson();">
+              <div class="row">
+                <div class="col-md-4" style="margin-bottom: 15px;">
+                  <label style="color: #ccc; margin-bottom: 5px;">Subject:</label>
+                  <input type="text" id="subject-input" placeholder="e.g. Computer Science" value="Computer Science" required style="width: 100%; padding: 10px 15px; border-radius: 10px; border: none; background: #fff;">
+                </div>
+                <div class="col-md-4" style="margin-bottom: 15px;">
+                  <label style="color: #ccc; margin-bottom: 5px;">Lesson Topic:</label>
+                  <input type="text" id="topic-input" placeholder="e.g. Data Structures & Arrays" value="Data Structures & Arrays" required style="width: 100%; padding: 10px 15px; border-radius: 10px; border: none; background: #fff;">
+                </div>
+                <div class="col-md-4" style="margin-bottom: 15px;">
+                  <label style="color: #ccc; margin-bottom: 5px;">Grade Level:</label>
+                  <select id="grade-input" style="width: 100%; padding: 10px 15px; border-radius: 10px; border: none; background: #fff;">
+                    <option>High School</option>
+                    <option>University / Undergraduate</option>
+                    <option>Middle School</option>
+                  </select>
+                </div>
+                <div class="col-12" style="margin-top: 10px;">
+                  <button type="submit" style="background: #a12c2f; color: #fff; border: none; padding: 12px 30px; border-radius: 20px; font-weight: bold; cursor: pointer;">Generate Lesson Outline</button>
+                </div>
+              </div>
+            </form>
+
+            <div id="output-area" style="margin-top: 30px; display: block;">
+              <h5 style="color: #f5a425; margin-bottom: 15px;">Generated AI Lesson Draft</h5>
+              <div id="draft-box" style="background: #13191c; padding: 25px; border-radius: 15px; border-left: 4px solid #f5a425; color: #eee; line-height: 1.6;">
+                <h6 style="color: #f5a425; font-size: 16px;">Lesson Plan: Data Structures & Arrays (Computer Science - High School)</h6>
+                
+                <h6 style="color: #fff; margin-top: 15px;">1. Learning Objectives</h6>
+                <ul>
+                  <li>Master the fundamental concepts of Data Structures & Arrays</li>
+                  <li>Apply theoretical memory models to real-world software scenarios</li>
+                  <li>Evaluate sample algorithm problems in peer groups</li>
+                </ul>
+
+                <h6 style="color: #fff; margin-top: 15px;">2. Core Lecture Outline (45 Mins)</h6>
+                <ul>
+                  <li><strong>Introduction (10m):</strong> Overview of contiguous memory allocation</li>
+                  <li><strong>Deep Dive (20m):</strong> O(1) indexing vs O(n) linear search</li>
+                  <li><strong>Class Activity (10m):</strong> Student breakout groups solving coding exercises</li>
+                  <li><strong>Q&A & Wrap-up (5m):</strong> Summary review and key takeaways</li>
+                </ul>
+
+                <h6 style="color: #fff; margin-top: 15px;">3. Homework & Assessment</h6>
+                <ul>
+                  <li>Complete Array Problem Set #1</li>
+                  <li>Submit 2-paragraph reflection on data structure optimization</li>
+                </ul>
+              </div>
+
+              <div style="margin-top: 20px;">
+                <button onclick="alert('Lesson Draft Approved and Saved to Class Schedule!')" style="background: #28a745; color: #fff; border: none; padding: 10px 25px; border-radius: 15px; font-weight: bold; cursor: pointer;">Approve Draft</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p>Copyright &copy; 2024 EduNova Platform. All Rights Reserved.
+        <br>
+        Powered by: <a href="https://www.nexvoragroup.dev" target="_blank">Nexvora Dev</a>
+      </p>
+    </div>
+  </section>
+
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/custom.js"></script>
+
+  <script>
+    function generateLesson() {
+      var subject = document.getElementById('subject-input').value;
+      var topic = document.getElementById('topic-input').value;
+      var grade = document.getElementById('grade-input').value;
+
+      var box = document.getElementById('draft-box');
+      box.innerHTML = "<h6 style='color: #f5a425; font-size: 16px;'>Lesson Plan: " + topic + " (" + subject + " - " + grade + ")</h6>" +
+        "<h6 style='color: #fff; margin-top: 15px;'>1. Learning Objectives</h6><ul><li>Master the fundamental concepts of " + topic + "</li><li>Apply theoretical models to real-world software scenarios</li><li>Evaluate sample algorithm problems in peer groups</li></ul>" +
+        "<h6 style='color: #fff; margin-top: 15px;'>2. Core Lecture Outline (45 Mins)</h6><ul><li><strong>Introduction (10m):</strong> Overview of " + topic + " key principles</li><li><strong>Deep Dive (20m):</strong> Step-by-step breakdown with visual slides</li><li><strong>Class Activity (10m):</strong> Student breakout groups solving interactive exercises</li><li><strong>Q&A & Wrap-up (5m):</strong> Summary review and key takeaways</li></ul>" +
+        "<h6 style='color: #fff; margin-top: 15px;'>3. Homework & Assessment</h6><ul><li>Complete Practice Problem Set #1 on " + topic + "</li><li>Prepare short reflection write-up</li></ul>";
+    }
+  </script>
+</body>
+</html>
