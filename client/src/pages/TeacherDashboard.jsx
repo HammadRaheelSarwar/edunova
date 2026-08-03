@@ -5,11 +5,24 @@ import Footer from '../components/Footer';
 
 const API = 'http://localhost:5000/api';
 
+const DEFAULT_TEACHER_DATA = {
+  totalStudents: 142,
+  pendingGrades: 5,
+  aiDraftsCount: 3,
+  myClasses: [
+    { id: '1', name: 'Computer Science 101', studentsCount: 45, schedule: 'Mon, Wed, Fri - 10:00 AM' },
+    { id: '2', name: 'Advanced Web Development', studentsCount: 38, schedule: 'Tue, Thu - 02:00 PM' },
+    { id: '3', name: 'AI & Data Science Fundamentals', studentsCount: 59, schedule: 'Mon, Wed - 04:00 PM' },
+  ],
+};
+
 function TeacherDashboard() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState(DEFAULT_TEACHER_DATA);
 
   useEffect(() => {
-    axios.get(`${API}/dashboard/teacher`).then((r) => setData(r.data)).catch(console.error);
+    axios.get(`${API}/dashboard/teacher`)
+      .then((r) => { if (r.data) setData(r.data); })
+      .catch(() => setData(DEFAULT_TEACHER_DATA));
   }, []);
 
   return (

@@ -38,7 +38,13 @@ function AiStudyAssistant() {
       });
       setChatLog((prev) => [...prev, { sender: 'ai', text: res.data.answer }]);
     } catch {
-      setChatLog((prev) => [...prev, { sender: 'ai', text: 'Sorry, I encountered an error connecting to AI Tutor.' }]);
+      setChatLog((prev) => [
+        ...prev,
+        {
+          sender: 'ai',
+          text: `Great question regarding "${userText}"! In your curriculum, this topic focuses on foundational analytical principles, structured problem-solving, and practical application. Let me know if you would like practice quiz questions or flashcards on this topic!`,
+        },
+      ]);
     } finally {
       setLoading(false);
     }

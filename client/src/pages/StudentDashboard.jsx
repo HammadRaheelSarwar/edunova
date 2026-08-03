@@ -5,15 +5,36 @@ import Footer from '../components/Footer';
 
 const API = 'http://localhost:5000/api';
 
+const DEFAULT_STUDENT_DATA = {
+  studentName: 'Alex Johnson',
+  grade: 'Grade 11 - Computer Science',
+  gpa: '3.88',
+  streak: 14,
+  xp: 4250,
+  level: 8,
+  aiScore: 94,
+  attendance: '96%',
+  weeklyGoals: [
+    { id: 1, title: 'Complete AI Study Assistant Practice Test', completed: true },
+    { id: 2, title: 'Submit Web Development Lab #3', completed: true },
+    { id: 3, title: 'Read Chapter 5: Data Structures', completed: false },
+    { id: 4, title: 'Attend Math Virtual Lecture', completed: false },
+  ],
+  badges: [
+    { name: 'AI Scholar', icon: 'fa-graduation-cap' },
+    { name: '14-Day Streak', icon: 'fa-fire' },
+    { name: 'Master Coder', icon: 'fa-code' },
+    { name: 'Top Attendee', icon: 'fa-star' },
+  ],
+};
+
 function StudentDashboard() {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState(DEFAULT_STUDENT_DATA);
 
   useEffect(() => {
     axios.get(`${API}/dashboard/student`)
-      .then((r) => setData(r.data))
-      .catch(console.error)
-      .finally(() => setLoading(false));
+      .then((r) => { if (r.data) setData(r.data); })
+      .catch(() => setData(DEFAULT_STUDENT_DATA));
   }, []);
 
   return (

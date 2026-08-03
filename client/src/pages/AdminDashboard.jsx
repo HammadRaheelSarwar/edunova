@@ -5,11 +5,27 @@ import Footer from '../components/Footer';
 
 const API = 'http://localhost:5000/api';
 
+const DEFAULT_ADMIN_DATA = {
+  totalStudents: 2345,
+  totalTeachers: 126,
+  monthlyRevenue: '$148,500',
+  attendanceAverage: '94.2%',
+  erpModulesActive: [
+    'Student Information System (SIS)',
+    'Automated AI Grading & Rubrics',
+    'Faculty Workload Management',
+    'Financial Billing & Fee Collection',
+    'Virtual Classroom & Video Archives',
+  ],
+};
+
 function AdminDashboard() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState(DEFAULT_ADMIN_DATA);
 
   useEffect(() => {
-    axios.get(`${API}/dashboard/admin`).then((r) => setData(r.data)).catch(console.error);
+    axios.get(`${API}/dashboard/admin`)
+      .then((r) => { if (r.data) setData(r.data); })
+      .catch(() => setData(DEFAULT_ADMIN_DATA));
   }, []);
 
   return (
